@@ -19,24 +19,35 @@ This is a **binary classification** task, as the target variable is strictly 0 o
 ## 2. Exploratory Data Analysis (EDA)
 
 ### 2.1 Dataset Overview
-- We loaded the dataset and inspected its size, columns, and data types using:
+  First of all we imported all the necessary Python Libraries including: pandas,numpy, matplotlib.pyplot and seaborn.
+  We loaded the dataset and inspected its size, columns, and data types using:
   ```python
   df.shape, df.info(), df.head()
   ```
   This was useful for us to have a clearer overview of the dataset provided.
   We found that the dataset is composed by 20000 rows and 31 columns (27 numerical columns and 4 categorical columns).
-- Summarized numeric columns and identified potential outliers or skewed distributions with `df.describe()`.
-- Visualized missing values (if any) using the `missingno` library.
-  We realized that several columns have missing values and also with the help of a heatmap that showed a large amounts of them we started to make some considerations that will take 
-  part during the preprocessing phase (which alternative to adopt if imputation or removal)
+  We summarized numeric columns and identified potential outliers or skewed distributions with `df.describe()`.
+  We visualized missing values.
+  We realized that several columns have missing values and also with the help of a heatmap that showed a large amounts of them we started 
+  to make some considerations that will take part during the preprocessing phase (which alternative to adopt if imputation or removal).
 
 ### 2.2 Data Visualization
-- **Histograms/Boxplots**: Analyzed distributions of features like `BondingRiskRating`, `MistakesLastYear`, etc.
+For this phase we took the help of a lot of graphycal element to have a clearer represenation of some particular variables.
+- **Histograms/Boxplots**:
+  Thanks to the histogram of the distribution of all the numerical variables we understood that the majority of the numercial features 
+  exhibit skewed distribution meaning there is a possible requirement of normalization or transformations. Analyzed distributions of features like `BondingRiskRating`, `MistakesLastYear`, etc.
+  The distribution of categorical variables too made us look at their imbalanced situation.
+  The distribution of target variable instead was useful to understand that BondingSuccessful is a very unbalanced variable with more         unsuccessful than successful.
+-  Analyzed distributions of features like `BondingRiskRating`, `MistakesLastYear`, etc.
 - **Countplots for Categorical Variables**: Explored columns like `JobStatus` and `CivilStatus`.
 - **Correlation Heatmap**: Identified potential feature relationships (e.g., `SkillRating` vs. `WorkExperience`).
+  The tool of the Correlation heatmap was essential to understand relationships between all the numerical variables.
+  Thanks to it we decided to drop some of the 27 numerical columns that were useless for our analysis for redundancy reason or because were not related to our target variable.
 
 ### 2.3 Observations
+With the boxplot for the numerical variables we noticed the presence of lots of outliers
 - Certain columns exhibited **extreme outliers** (e.g., `ProcessedKilograms`), requiring removal or capping.
+  Removal of outlier could be a crucial part of the next phase of our project , the preprocessing, but as we can show further ahead the models two of three models that we use for our analysis are very robust to outliers and our intention is to not reduce drastically the dataset even because we removed already some columns and we knwo that the models we use are very efficient with large dataset. 
 - **Missing values** in some columns necessitated imputation strategies.
 - The target variable (`BondingSuccessful`) displayed some level of imbalance (validated using `df['BondingSuccessful'].value_counts()`).
 
