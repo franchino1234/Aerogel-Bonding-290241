@@ -49,7 +49,7 @@ We imported the necessary libraries, including: Pandas, Numpy, Matplotlib.pyplot
    Checking missing values is crucial in data analysis and preprocessing for several reasons, such as data quality, model performance, preprocessing decisions, and feature evaluation.  
    To better visualize their distribution, we created a heatmap that shows, through a light cell, a massive concentration of missing values, confirming what we saw in the list of missing values.
 
-   ![Heatmap of missing values](output.png)
+   ![Heatmap of missing values](images/output.png)
 
 
 
@@ -57,7 +57,7 @@ We imported the necessary libraries, including: Pandas, Numpy, Matplotlib.pyplot
    We then focused on the target variable to observe its behavior and distribution, knowing that it is a binary variable (`1` for success, `0` for failure).  
    We decided to plot its distribution and found that it was highly imbalanced.
 
-   ![Distribution of bonding succesful](bondsucces.png)
+   ![Distribution of bonding succesful](images/bondsucces.png)
 
    As we can see from the image, the unsuccessful case (`0`) with 13,690 instances is much larger than the successful case (`1`) with 4,307.  
    This imbalance needed to be addressed.
@@ -90,7 +90,7 @@ To understand the behavior of each specific variable, we plotted histograms.
 We used them to understand the distribution of numerical features, identify skewness or outliers that may need handling, and assess data readiness for modeling by spotting patterns or irregularities. We realized that in the dataset, many features, like `RequestedProcessAmount` and `ProcessedKilograms`, were right-skewed, indicating most values were low with a few outliers. Others, like `Dependability` and `Trustability`, followed a normal distribution. Some features, such as `HolidaysTaken`, displayed discrete patterns, while `MistakesLastYear` was heavily imbalanced. `BondingSuccessful` was obviously concentrated between 0 and 1.  
 These observations suggested the need for preprocessing steps like normalization, outlier handling, and addressing class imbalances to improve data quality and model performance.
 
-   ![Numerical data distribution](datadistr.png)
+   ![Numerical data distribution](images/datadistr.png)
 
 We did the same work for the categorical features and found that they were imbalanced, with some categories (e.g., `Bachelor`, `Employed`, `Married`) dominating the dataset. These could introduce bias into machine learning models.
 
@@ -114,7 +114,7 @@ Thus, we decided to drop some columns to reduce our dataset size and make it mor
 We conducted further analysis, examining the relationships between the target variable and selected features.  
 We specifically wanted to highlight the pairplot of the most important variables for the target variable.
 
-   ![Pairplot of most important variables for target](pairplot.png)
+   ![Pairplot of most important variables for target](images/pairplot.png)
 
 This analysis uncovered valuable insights that could guide improvements prior to commercializing the bonding process.
 
@@ -132,7 +132,7 @@ To assess missing data, we calculated their total counts and visualized the resu
 - **Outliers**:  
 Outliers in numerical features were detected using the BoxPlot method. Box plots provided a visual summary of key statistics, including the median, interquartile range, and potential **outliers**. They were particularly useful for identifying outliers, understanding variability, and comparing features.
 
-   ![Boxplot shows outliers](ouliers.png)
+   ![Boxplot shows outliers](images/ouliers.png)
 
 As the boxplot showed, many of the variables showed significant outliers.  
 Upon further consideration, we concluded that removing outliers from all features would have led to the loss of valuable data, as anomalies often carried critical information in industrial datasets.  
@@ -201,7 +201,7 @@ The results indicated that all three models performed exceptionally well, with h
 
 Gradient Boosting stood out as the best model due to its slightly higher accuracy (98.03%), F1-Score (98.03%), and an outstanding ROC-AUC of 99.83%, showcasing its superior ability to capture complex patterns in the data while maintaining excellent generalization. The ROC curve further highlights its robustness, with a near-perfect AUC, making it a reliable choice for this classification task.
 
-   ![Comparing the results through ROC-AUC](roc-auc.png)
+   ![Comparing the results through ROC-AUC](images/roc-auc.png)
 
 ---
 
@@ -209,7 +209,7 @@ Gradient Boosting stood out as the best model due to its slightly higher accurac
 
 The analysis conducted in this project demonstrates that aerogel bonding is a predictable and optimizable process, thanks to the application of machine learning techniques. The Gradient Boosting model, in particular, showcased high performance, indicating its potential as a reliable tool for assessing bonding quality.
 
-![top 20 Feature importance](featureimportance.png)
+![top 20 Feature importance](images/featureimportance.png)
 
 As we can see from the "Top 20 Feature Importances" image, two critical predictors for bonding success were identified: **`BondingRiskRating`**, a key indicator of process risk, and **`ProcessedKilograms`**, which reflects the material handling quality. Importantly, during our long analysis we observed that **`BondingRiskRating`** is inversely proportional to **`BondingSuccessful`**, meaning that lower risk ratings are strongly associated with higher bonding success. 
 In addition to these predictors, other features such as **`ByproductRation`**, **`MistakesLastYear`**, and **`RequestedProcessAmount`** also emerged as significant contributors to bonding success, as highlighted in the feature importance analysis. These features emphasize the multifaceted nature of the bonding process, where both material characteristics and operational factors play crucial roles. The feature importance analysis underscored the dominance of **`BondingRiskRating`**, reinforcing its relevance in risk assessment and decision-making processes.
