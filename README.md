@@ -3,7 +3,7 @@
 ### **Team Members**
 - Francesco Costa 299271
 - Lorenzo Cinelli 292481
-- Sebastian Jr. Foumane 290241
+- Sebastian Jr. Foumane 290241 (“captain”)
 
 ---
 
